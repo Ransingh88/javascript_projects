@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- fontawesome -->
+    <link href="./assets/css/fontawesome.css" rel="stylesheet" />
+    <link href="./assets/css/solid.css" rel="stylesheet" />
+    <title>Task Management</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="title_container">
+        <div class="title">
+          <h1>Travel</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
+            dolorum saepe maxime labore excepturi commodi fugiat atque
+            repudiandae reiciendis rerum.
+          </p>
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
+      </div>
+      <div class="carousel">
+        <div class="navigation_button">
+          <button class="navBtn" id="prev">
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+          <div class="imageIndicator" id="imageIndicator"></div>
+          <button class="navBtn" id="next">
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <button id="autoSlide"></button>
+        </div>
+        <div class="carousel_ImgContainer" id="carousel_container">
+          <img
+            src="./images/adventure-4381674_1280.jpg"
+            alt="adventure image"
+            id="carousel_image"
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
