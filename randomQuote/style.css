@@ -124,10 +124,27 @@
   }
 
   & .right_box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     & .author {
       color: #242424;
       font-style: italic;
       font-size: small;
+    }
+    & button {
+      border: none;
+      outline: none;
+      font-size: large;
+      color: #606060;
+      color: rgb(121, 74, 110);
+      margin: 0.4rem;
+      background: none;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+    & button:active {
+      transform: scale(0.9);
     }
   }
 }
@@ -143,5 +160,52 @@
   100% {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .quote_container {
+    height: auto;
+    width: 90%;
+    margin-bottom: 1rem;
+  }
+
+  .quote {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .action_container {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding-top: 1rem;
+    border-top: none;
+  }
+
+  .action_container .left_box {
+    width: 100%;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .action_container .left_box .newQuoteBtn {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+  }
+
+  .action_container .right_box {
+    width: 100%;
+    align-items: center;
+  }
+
+  .action_container .right_box .author {
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .action_container .right_box button {
+    font-size: 1.2rem;
   }
 }

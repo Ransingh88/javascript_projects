@@ -9,10 +9,14 @@ var randomQuoteUrl = "https://api.freeapi.app/api/v1/public/quotes/quote/random"
 newQuoteBtn.addEventListener("click", () => {
   quoteContainer.classList.remove("animateText")
   getRandomQuote(randomQuoteUrl)
+  copyBtn.innerHTML = '<i class="fa-solid fa-clipboard"></i>'
+
 })
 
 copyBtn.addEventListener("click", () => {
   copyToClipboard()
+  copyBtn.innerHTML = null
+  copyBtn.innerHTML = '<i class="fa-solid fa-clipboard-check"></i>'
 })
 exportBtn.addEventListener("click", () => {
   convertToImage()
