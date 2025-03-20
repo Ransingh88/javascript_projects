@@ -4,60 +4,50 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-
 .main_container {
   height: 100vh;
   width: 100%;
-  max-height: 100vh;
   background-color: #f8f8fa;
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  position: relative;
   background-image: radial-gradient(
     circle 400px at 6.8% 8.3%,
     rgba(255, 244, 169, 1) 0%,
     rgba(255, 244, 234, 1) 100.2%
   );
-  /* background-image: linear-gradient( 174.2deg,  rgba(255,244,228,1) 7.1%, rgba(240,246,238,1) 67.4% ); */
-  /* background-image: linear-gradient( 92.7deg,  rgba(245,212,212,1) 8.5%, rgba(252,251,224,1) 90.2% ); */
-  /* background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%); */
-  /* background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%); */
-  /* background-image: linear-gradient(to top, #dad4ec 0%, #dad4ec 1%, #f3e7e9 100%); */
 }
+
 .bg_texture {
-  background-image: url("./images/Randomstatic2.png");
-  /* background-image: url("./images/nnnoise8.svg"); */
   position: absolute;
-  width: 100%;
-  height: 100%;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("./images/Randomstatic2.png");
   background-size: cover;
-  opacity: 0.12; /* Adjust visibility */
+  opacity: 0.12;
   pointer-events: none;
-  /* mix-blend-mode: overlay; */
 }
 
 .bg_quoteMark {
   position: absolute;
-  right: 100px;
   top: -500px;
+  right: 100px;
   font-size: 40rem;
   font-family: "Sorts Mill Goudy", serif;
   color: #303030;
-  /* opacity: 0.5; */
   transform: scale(-1, -1);
-  display: inline;
   mix-blend-mode: overlay;
 }
 
 .container {
   z-index: 10;
-  height: 100%;
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -65,23 +55,20 @@
   margin: 2rem;
   padding: 2rem;
 }
-.quote_container {
-  height: 50%;
-  width: 60%;
-  display: flex;
-  /* justify-content: center; */
-  align-items: center;
 
+.quote_container {
+  width: 60%;
+  height: 50%;
+  display: flex;
+  align-items: center;
   overflow: hidden;
 }
 
 .quote {
   font-size: 2.5rem;
-  /* font-style: italic; */
   font-family: "Sorts Mill Goudy", serif;
   padding: 1rem;
   color: #242424;
-  /* animation: revealText 0.5s ease-in-out; */
 }
 
 .animateText {
@@ -96,56 +83,71 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+}
 
-  & .left_box {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    & .tags {
-      color: rgb(91, 0, 32);
-      font-size: small;
-      text-transform: uppercase;
-    }
+.action_container .left_box {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-    & .newQuoteBtn {
-      padding: 0.6rem 2.5rem;
-      background-color: rgb(91, 0, 70);
-      color: whitesmoke;
-      border: none;
-      outline: none;
-      /* margin-top: 3rem; */
-      cursor: pointer;
-      transition: all 0.1s ease-in-out;
-    }
-    & .newQuoteBtn:active {
-      transform: scale(0.95);
-    }
+.action_container .left_box .tags {
+  color: rgb(91, 0, 32);
+  font-size: small;
+  text-transform: uppercase;
+}
+
+.action_container .left_box .newQuoteBtn {
+  padding: 0.6rem 2.5rem;
+  background-color: rgb(91, 0, 70);
+  color: whitesmoke;
+  border: none;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+.action_container .left_box .newQuoteBtn:active {
+  transform: scale(0.95);
+}
+
+.action_container .right_box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.action_container .right_box .author {
+  color: #242424;
+  font-style: italic;
+  font-size: small;
+}
+
+.action_container .right_box button {
+  border: none;
+  font-size: large;
+  color: rgb(121, 74, 110);
+  margin: 0.4rem;
+  background: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.action_container .right_box button:active {
+  transform: scale(0.9);
+}
+
+@keyframes revealText {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
   }
-
-  & .right_box {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    & .author {
-      color: #242424;
-      font-style: italic;
-      font-size: small;
-    }
-    & button {
-      border: none;
-      outline: none;
-      font-size: large;
-      color: #606060;
-      color: rgb(121, 74, 110);
-      margin: 0.4rem;
-      background: none;
-      cursor: pointer;
-      transition: all 0.2s ease-in-out;
-    }
-    & button:active {
-      transform: scale(0.9);
-    }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
