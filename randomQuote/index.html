@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,7 +21,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="main_container">
+    <div class="main_container" id="main_container">
       <div class="bg_texture"></div>
       <span class="bg_quoteMark">"</span>
       <div class="container">
@@ -34,11 +35,13 @@
           </div>
           <div class="right_box">
             <p id="author" class="author"></p>
-            <button id="copy"></button>
+            <button id="copy">copy</button>
+            <button id="export">export</button>
           </div>
         </div>
       </div>
     </div>
   </body>
   <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </html>
