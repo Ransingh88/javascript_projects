@@ -1,5 +1,6 @@
 const moods_container = document.getElementById("moods_container")
-const data = document.getElementById("data")
+const datacontainer = document.getElementById("data")
+const greetUser = document.getElementById("greet")
 
 const moods = [
   {
@@ -48,24 +49,29 @@ const fullMonthDates = getFullMonthDates(currentYear, currentMonth)
 window.onload = () => {
   const data = JSON.parse(localStorage.getItem("moodTrack"))
   const toDay = new Date().toLocaleDateString()
+  greetUser.innerText = "Hi buddy! How are you feeling?"
   data.forEach((moodItem) => {
     if (
       moodItem.fullDate == now.toLocaleDateString() &&
       !moodItem.isSubmitted
     ) {
+      greetUser.innerText = "Hi buddy! How are you feeling?"
       renderMoods()
     } else {
-      console.log(JSON.stringify(data))
+      datacontainer.innerHTML = null
       data.forEach((data) => {
-        const aaa = document.createElement("p")
-        aaa.innerText = `${data.fullDate} - ${data.dataValue}`
+        const ptag = document.createElement("p")
+        ptag.innerText = data.dataValue
+          ? `${data.date} ${data.dataValue}`
+          : data.date
 
-        data.appendChild(aaa)
+        datacontainer.appendChild(ptag)
       })
     }
   })
-  console.log("object", data)
-  console.log("object", toDay)
+
+  // console.log("object", data)
+  // console.log("object", toDay)
 }
 
 const renderMoods = () => {
@@ -78,14 +84,14 @@ const renderMoods = () => {
     moods_container.appendChild(emotionBtn)
   })
 }
-// renderMoods()
+renderMoods()
 const moodbtn = document.querySelectorAll(".moodbtn")
 moodbtn.forEach((button) => {
   button.addEventListener("click", () => {
     monthCalender = monthCalender.map((date) => {
       if (date.dataValue) {
         console.log("you have already submitted")
-        // alert("you have already submitted")
+        alert("you have recorded you mood for today.")
         return date
       } else {
         return date.fullDate == now.toLocaleDateString()
@@ -93,8 +99,9 @@ moodbtn.forEach((button) => {
           : date
       }
     })
-    console.log(monthCalender)
+    // console.log(monthCalender)
     localStorage.setItem("moodTrack", JSON.stringify(monthCalender))
+    window.location.reload()
   })
 })
 

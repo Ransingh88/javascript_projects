@@ -8,3 +8,21 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.calender {
+  display: grid;
+  width: fit-content;
+  grid-template-columns: repeat(7, 100px);
+  gap: 0.5rem;
+  border: 1px solid #b1b1b1;
+  border-radius: 0.5rem;
+  padding: 1rem;
+
+  & p {
+    background-color: whitesmoke;
+    /* margin: 0.5rem; */
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    border: 1px solid #ddd;
+  }
+}
