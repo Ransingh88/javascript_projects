@@ -23,6 +23,7 @@ a {
     rgba(9, 29, 85, 1) 0.2%,
     rgba(0, 0, 0, 1) 100.2%
   ); */
+  color: whitesmoke;
 }
 .content {
   padding: 1.5rem;
@@ -49,6 +50,13 @@ a {
     border-radius: 0.5rem;
     border: 1px solid rgb(46, 7, 37);
     color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+    }
+    & .searchbarBox > input:focus {
+    border-color: rgb(255, 105, 180,0.5);
+    box-shadow: 0 0 8px rgba(255, 105, 180, 0.8);
+    background-color: rgba(255, 255, 255, 0.1);
   }
 }
 
@@ -102,5 +110,15 @@ a {
       font-size: x-small;
       color: #919191;
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
   }
 }
