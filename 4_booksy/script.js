@@ -1,5 +1,8 @@
+const baseUrl = "https://api.freeapi.app/api/v1/public/books"
 let booksData
-const url = "https://api.freeapi.app/api/v1/public/books?limit=999"
+let allBookData
+let page = 1
+let pageLimit = 20
 
 async function fetchDataFromAPI(url) {
   try {
@@ -15,17 +18,27 @@ async function fetchDataFromAPI(url) {
   }
 }
 
-fetchDataFromAPI(url)
+fetchDataFromAPI(`${baseUrl}?page=${page}&limit=${pageLimit}`)
   .then((data) => {
     console.log("Fetched data:", data)
-    booksData = data.data.data
-    renderTitlesToContainer(booksData, "bookresult")
+    booksData = data.data
+    renderBooks(booksData.data, "bookresult")
   })
   .catch((error) => {
     console.error("Error occurred:", error)
   })
 
-function renderTitlesToContainer(data, containerId) {
+fetchDataFromAPI(`${baseUrl}?limit=999`)
+  .then((data) => {
+    console.log("Fetched data:", data)
+    allBookData = data.data
+    // renderBooks(allBookData, "bookresult")
+  })
+  .catch((error) => {
+    console.error("Error occurred:", error)
+  })
+
+const renderBooks = (data, containerId) => {
   const container = document.getElementById(containerId)
   if (!container) {
     console.error(`Container with id "${containerId}" not found.`)
@@ -41,11 +54,33 @@ function renderTitlesToContainer(data, containerId) {
       container.appendChild(paragraph)
     }
   })
+    document.getElementById(
+      "pageInfo"
+    ).innerText = `${page}/${booksData.totalPages}`
+
+}
+
+const updateData = () => {
+  document.getElementById("bookresult").innerHTML = null
+  renderBooks(booksData.data, "bookresult")
+}
+
+const pagination = () => {
+  fetchDataFromAPI(`${baseUrl}?page=${page}&limit=${pageLimit}`)
+    .then((data) => {
+      console.log("Fetched data:", data)
+      booksData = data.data
+      // renderBooks(booksData.data, "bookresult")
+    })
+    .catch((error) => {
+      console.error("Error occurred:", error)
+    })
 }
 
 const serachbox = document.getElementById("serachbox")
-const search = () => {
-  const filteredData = booksData.filter(
+const searchFilter = () => {
+  const datToBeFiltered = serachbox.value ? allBookData : booksData.data
+  const filteredData = datToBeFiltered.filter(
     (item) =>
       item.volumeInfo.title.toLowerCase().includes(serachbox.value) ||
       (item.volumeInfo?.authors &&
@@ -57,7 +92,24 @@ const search = () => {
 }
 
 serachbox.addEventListener("keyup", () => {
-  const fd = search()
+  const fd = searchFilter()
   document.getElementById("bookresult").innerHTML = null
-  renderTitlesToContainer(fd, "bookresult")
+  renderBooks(fd, "bookresult")
+})
+
+document.getElementById("prevBtn").addEventListener("click", () => {
+  if (booksData.previousPage) {
+    page -= 1
+    pagination()
+    updateData()
+  }
+})
+
+document.getElementById("nextBtn").addEventListener("click", () => {
+  if (booksData.nextPage) {
+    page += 1
+    pagination()
+    document.getElementById("pageInfo").innerText = `${page}/${booksData.totalPages}`
+    updateData()
+  }
 })
